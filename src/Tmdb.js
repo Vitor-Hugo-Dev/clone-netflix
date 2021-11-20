@@ -31,19 +31,31 @@ export default {
       slug: 'action',
       title: 'Ação',
       items: await
-      fetchApi(`discover/tv?with_network=213&language=pr-BR&api_key${API_KEY}`),
+      fetchApi('discover/movie?with_genres=28&'),
     },
     {
       slug: 'comedy',
       title: 'Comédia',
       items: await
-      fetchApi(`discover/tv?with_network=213&language=pr-BR&api_key${API_KEY}`),
+      fetchApi('discover/movie?with_genres=35&'),
     },
     {
-      slug: 'originals',
-      title: 'Originais do Netflix',
+      slug: 'horror',
+      title: 'Terror',
       items: await
-      fetchApi(`discover/tv?with_network=213&language=pr-BR&api_key${API_KEY}`),
+      fetchApi('discover/movie?with_genres=27&'),
+    },
+    {
+      slug: 'romance',
+      title: 'Romance',
+      items: await
+      fetchApi('discover/movie?with_genres=10749&'),
+    },
+    {
+      slug: 'documentary',
+      title: 'Documentario',
+      items: await
+      fetchApi('discover/movie?with_genres=99&'),
     },
   ],
 };

@@ -1,20 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Tmdb from './Tmdb';
 
 function App() {
+  const [movieList, setMovieList] = useState([]);
+
   useEffect(() => {
     const loadAll = async () => {
       // Pegando a lista total
       const list = await Tmdb.getHomeList();
-      console.log(list);
+      setMovieList(list);
     };
 
     loadAll();
   }, []);
 
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div className="page">
+      Header
+      Destaque
+      As listas
+      Rodapé Picudo
     </div>
   );
 }
