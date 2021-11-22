@@ -1,13 +1,21 @@
+/* eslint-disable react/jsx-max-depth */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import PropTypes from 'prop-types';
 import React from 'react';
 import './FeatureMovie.css';
+import { BsFillPlayFill } from 'react-icons/bs';
 
-const Featuremovie = ({ item }) => {
+const FeatureMovie = ({ item }) => {
   const firstDate = new Date(item.first_air_date);
+
   const genres = [];
-  for (let index = 0; index < item.genres.length; index += 1) {
-    genres.push(item.genres[index].name);
+
+  for (const i in item.genres) {
+    genres.push(item.genres[i].name);
   }
+
+  console.log(item);
 
   return (
     <section
@@ -22,7 +30,7 @@ const Featuremovie = ({ item }) => {
         <div className="featured--horizontal">
           <div className="featured--name">{item.original_name}</div>
           <div className="featued--infos">
-            <div className="featured--points">{item.vote_average}</div>
+            <div className="featured--points">{`${item.vote_average} pontos`}</div>
             <div className="featured--year">{firstDate.getFullYear()}</div>
             <div className="featured--seasons">
               {`${item
@@ -31,16 +39,31 @@ const Featuremovie = ({ item }) => {
             </div>
             <div className="featured--description">{item.overview}</div>
             <div className="featured--buttons">
-              botoes
+              <button
+                className="watchButton"
+                type="button"
+              >
+                <BsFillPlayFill />
+                Assistir
+              </button>
+              <button
+                className="myListButton"
+                type="button"
+              >
+                + Minha Lista
+              </button>
             </div>
-            <div className="featured--genres">{genres.join(', ')}</div>
+            <div className="featured--genres">
+              <strong>Gêneros: </strong>
+              {genres.join(', ')}
+            </div>
           </div>
         </div>
       </div>
     </section>);
 };
 
-Featuremovie.propTypes = {
+FeatureMovie.propTypes = {
   item: PropTypes.shape({
     original_name: PropTypes.string,
     backdrop_path: PropTypes.string,
@@ -54,4 +77,4 @@ Featuremovie.propTypes = {
   }).isRequired,
 };
 
-export default Featuremovie;
+export default FeatureMovie;

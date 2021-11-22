@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Tmdb from './Tmdb';
 import MovieRow from './components/MovieRow';
-import Featuremovie from './components/FeatureMovie';
+import FeatureMovie from './components/FeatureMovie';
 
 function App() {
   const [movieList, setMovieList] = useState([]);
@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="page">
       {featureData
-        && <Featuremovie item={ featureData } />}
+        && <FeatureMovie item={ featureData } />}
 
       <section className="lists">
         {movieList.map((item, key) => (
