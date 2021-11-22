@@ -1,12 +1,15 @@
+/* eslint-disable no-magic-numbers */
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Tmdb from './Tmdb';
 import MovieRow from './components/MovieRow';
 import FeatureMovie from './components/FeatureMovie';
+import Header from './components/Header';
 
 function App() {
   const [movieList, setMovieList] = useState([]);
   const [featureData, setFeatureData] = useState([]);
+  const [headerBlack, setHeaderBlack] = useState(false);
 
   useEffect(() => {
     const loadAll = async () => {
@@ -22,12 +25,28 @@ function App() {
       const chosenData = await Tmdb.getMovieDetails(chosen.id, 'tv');
       setFeatureData(chosenData);
     };
-
     loadAll();
+  }, []);
+
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 10) {
+        setHeaderBlack(true);
+      } else {
+        setHeaderBlack(false);
+      }
+    };
+
+    window.addEventListener('scroll', scrollListener);
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    };
   }, []);
 
   return (
     <div className="page">
+      <Header black={ headerBlack } />
       {featureData
         && <FeatureMovie item={ featureData } />}
 
