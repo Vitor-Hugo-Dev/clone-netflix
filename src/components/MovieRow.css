@@ -12,7 +12,7 @@
 }
 
 .movieRow--list {
-  width: 9999999999px;
+  transition: all ease 0.5s;
 }
 
 .movieRow--item {
@@ -29,4 +29,35 @@
 
 .movieRow--item img:hover {
   transform: scale(1);
+}
+
+.movieRow-left,
+.movieRow-right {
+  position: absolute;
+  width: 40px;
+  height: 225px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0;      /*para fazer o efeito que aparecer apenas na categoria que o mouse estiver */
+  transition: all ease 0.5s;
+}
+
+.movieRow-left {
+  left: 0px;
+
+}
+
+.movieRow-right {
+  right: 0px;
+}
+
+.movieRow:hover .movieRow-left, /*para fazer o efeito que aparecer apenas na categoria que o mouse estiver */
+.movieRow:hover .movieRow-right {
+  opacity: 1;
 }

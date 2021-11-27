@@ -5,6 +5,7 @@ import Tmdb from './Tmdb';
 import MovieRow from './components/MovieRow';
 import FeatureMovie from './components/FeatureMovie';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   const [movieList, setMovieList] = useState([]);
@@ -55,6 +56,15 @@ function App() {
           <MovieRow key={ key } title={ item.title } items={ item.items } />
         ))}
       </section>
+      <Footer />
+
+      {movieList.length <= 0 && (
+        <div className="loading">
+          <img
+            src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif"
+            alt="loading"
+          />
+        </div>)}
     </div>
   );
 }

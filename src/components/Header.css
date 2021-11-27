@@ -23,6 +23,7 @@ header {
 
 .header--userLogo {
   height: 40px;
+  cursor: pointer;
 }
 
 .header--userLogo img {
