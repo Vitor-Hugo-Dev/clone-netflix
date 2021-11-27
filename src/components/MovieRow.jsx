@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 import { NavigateBefore, NavigateNext } from '@material-ui/icons';
 
 function MovieRow({ title, items }) {
-  const [leftMargin, setLeftMargin] = useState(-450);
+  const [leftMargin, setLeftMargin] = useState(0);
   const movieLeft = () => {
     let x = leftMargin + Math.round(window.innerWidth / 2);
     if (x > 0) {
